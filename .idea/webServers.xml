@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dbf1fb1c-5c83-4d0b-a662-274151a87853" name="OneButton" url="http://onebutton.darasareports.com">
+        <fileTransfer rootFolder="/www/onebutton" host="onebutton.darasareports.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
