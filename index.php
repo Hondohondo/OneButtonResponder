@@ -11,9 +11,10 @@
 <body>
 
 <form action="process.php" method="post">
-    <button>Submit</button>
+    <button id="alertButton" type="button">Submit</button>
 <!--    <input type="submit" value="Submit">-->
 </form>
 
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 // Report all errors
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -10,7 +9,6 @@ error_reporting(E_ALL);
 //$email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
 //$message = trim($_POST["message"]);
 //$country = trim($_POST["country"]);
-
 
 //Check data
 //if(empty($name) OR empty($country) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -23,7 +21,24 @@ error_reporting(E_ALL);
     exit;
 }*/
 
+//Get the data from the frontend
+//Read the raw input data from the request
+$data = json_decode(file_get_contents('php://input'), true);
+
+//Extract the message
+//Assign the 'message' key from the data to the variable $message (if it exists)
+$message = $data['message'] ?? null;
+
+//Check if $message is set and valid
+if(isset($message)) {
+    echo json_encode(['status'=>'success','message' => $message]);
+} else {
+    //Handle cases where the message key doesn't exist or is null
+    echo json_encode(['status'=>'error','message' => "Something went wrong"]);
+}
+
 //Set the recipient email address.
+//$recipient = "mnandi19@jcu.edu, hondohondo@hotmail.com";
 $recipient = "mnandi19@jcu.edu, websitevanillapro@gmail.com";
 
 //Set the email subject
@@ -34,6 +49,7 @@ $subject = "Urgent: I'm in danger, please send help";
 //$email_content = "Name: $name\n";
 $email_content = "Mom and Dad,\n\n";
 $email_content .= "I'm in immediate danger and used the one-button responder app to send this message. Please send help right away\n\n";
+$email_content .= "$message \n\n";
 $email_content .= "Love, your son\n\n";
 //$email_content .= "Email: $email\n\n";
 //$email_content .= "State or Country: \n$country\n";
@@ -45,9 +61,7 @@ $email_headers = "From: Moses Nandi <postmaster@darasareports.com>";
 
 //Send the email
 mail($recipient, $subject, $email_content, $email_headers);
-
 //Redirect to the index.php page with success code
 //header("Location: https://intensivejournal.org/landingpage/index.php?success=1#form");
-header("Location: success.html");
-
+//header("Location: success.html");
 ?>

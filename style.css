@@ -13,3 +13,16 @@ form {
     margin: 0 auto;
     width: 500px;
 }
+
+.success-message {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;  /* Green background for success */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
